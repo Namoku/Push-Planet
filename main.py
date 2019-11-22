@@ -1,4 +1,4 @@
-import pygame, os, level1, menu
+import pygame, os, level1, menu, hud, time
 from pygame.locals import *
 
 # Inicializar pygame ---
@@ -11,13 +11,12 @@ clock = pygame.time.Clock()
 BackGround = level1.Background([0, 0])
 font = pygame.font.Font('freesansbold.ttf', 18)
 # Colores
-color1 = [(255, 100, 0),(255, 100, 100),0]
-color2 = [(50, 255, 0),(255, 100, 100),0]
-color3 = [(50, 0, 0),(0, 100, 100),0]
+
 # Ciclo
 running = True
 menus = True
 # Metodos
+
 #Pause
 def Pause():
     pause = True
@@ -155,10 +154,17 @@ def LevelSelector():
         pygame.display.flip()
 
 def Level1():
+    destino = (0,0)
     level1.restart()
-    level = True
+    power = 400
+    level = level1.AnimacionTutorial(screen)
+    level1.AnimacionNave(screen)
+    level1.AnimacionEnemigo(screen, True)
+    t0 = time.time()
     while level:
         dt = clock.tick(100)
+        if level1.vida <= 0:
+            level = False
         # print "Caja", level1.caja.caja1.x
         # print "Personaje", level1.player.bobby.x
         level = Teclado(level)
@@ -169,27 +175,59 @@ def Level1():
         screen.blit(BackGround.image, BackGround.rect)
         for wall in level1.walls:
             screen.blit(wall.image, (wall.rect.x, wall.rect.y))
-            # pygame.draw.rect(screen, (0, 0, 0), wall.rect)
         for vacio in level1.vacios:
             pygame.draw.rect(screen, (202, 204, 206), vacio.rect)
-        #pygame.draw.rect(screen, (255, 0, 0), level1.end_rect)
-
-        # pygame.draw.rect(screen, (255, 255, 255), level1.player.bobby)
-        if level1.caja.caja1.colliderect(level1.bote.bote1):
-            color1[2] = 1
-        if level1.caja.caja2.colliderect(level1.bote.bote2):
-            color2[2] = 1
-        if level1.caja.caja1.colliderect(level1.bote.bote1) and level1.caja.caja2.colliderect(level1.bote.bote2):
-            # screen.blit(font.render("GANASTE", True, (0, 0, 0)), (1280/2, 720/2))
-            level1.restart()
-        # pygame.draw.rect(screen, (100, 100, 100), level1.player.bobby)
-        pygame.draw.rect(screen, (255, 50, 0), level1.bote.bote1)
-        pygame.draw.rect(screen, (100, 255, 0), level1.bote.bote2)
-        pygame.draw.rect(screen, color1[color1[2]], level1.caja.caja1)
-        pygame.draw.rect(screen, color2[color2[2]], level1.caja.caja2)
-        pygame.draw.rect(screen, color3[color3[2]], level1.caja.caja3)
+        if level1.caja.caja1.colliderect(level1.bote.nave):
+            level1.vida += power
+            level1.caja.caja1.x = level1.caja1PosX
+            level1.caja.caja1.y = level1.caja1PosY
+            level1.latas += 1
+        if level1.caja.caja2.colliderect(level1.bote.nave):
+            level1.vida += power
+            level1.caja.caja2.x = level1.caja2PosX
+            level1.caja.caja2.y = level1.caja2PosY
+            level1.latas += 1
+        if level1.caja.caja3.colliderect(level1.bote.nave):
+            level1.vida += power
+            level1.caja.caja3.x = level1.caja3PosX
+            level1.caja.caja3.y = level1.caja3PosY
+            level1.latas += 1
+        screen.blit(level1.bote.image, level1.bote.rect)
+        screen.blit(level1.caja.image, level1.caja.caja1)
+        screen.blit(level1.caja.image, level1.caja.caja2)
+        screen.blit(level1.caja.image, level1.caja.caja3)
         screen.blit(level1.player.image, (level1.player.bobby.x-6, level1.player.bobby.y))
+        screen.blit(hud.barra, (0,0))
+        screen.blit(hud.vida, (0,0))
+        screen.blit(hud.cesto, (650,5))
+        screen.blit(hud.igual, (700,0))
+        if level1.latas >= 1:
+            screen.blit(hud.lata, (760,12))
+        if level1.latas >= 2:
+            screen.blit(hud.lata, (810,12))
+        if level1.latas >= 3:
+            screen.blit(hud.lata, (860,12))
+        if level1.latas >= 4:
+            screen.blit(hud.lata, (910,12))
+            level1.cestos += 1
+            level1.latas = 0
+        screen.blit(hud.palomita, (963,5))
+        screen.blit(hud.igual, (1020,0))
+        if level1.cestos >= 1:
+            screen.blit(hud.cesto, (1080,5))
+        if level1.cestos >= 2:
+            screen.blit(hud.cesto, (1130,5))
+        if level1.cestos >= 3:
+            screen.blit(hud.cesto, (1180,5))
+        if level1.cestos >= 4:
+            screen.blit(hud.cesto, (1230,5))
+        screen.blit(hud.barra2, (50,5))
+        if level1.vida > 586:
+            level1.vida = 586
+        pygame.draw.rect(screen, (255, 0, 21), (52, 7, level1.vida, 36))
+        destino = level1.AIEnemigo(destino, screen)
         pygame.display.flip()
+        level1.vida -= 0.5
 
 # Main
 MainMenu()
