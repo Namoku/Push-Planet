@@ -241,9 +241,9 @@ def Level1():
         screen.blit(hud.igual, (1020,0))
         if level1.vida > 586:
             level1.vida = 586
+	screen.blit(hud.barra2, (50,5))
         pygame.draw.rect(screen, (255, 0, 21), (52, 7, level1.vida, 36))
         destino = level1.AIEnemigo(destino, screen)
-        screen.blit(hud.barra2, (50,5))
         if level1.cestos >= 1:
             screen.blit(hud.cesto, (1080,5))
         if level1.cestos >= 2:
