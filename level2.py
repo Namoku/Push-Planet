@@ -1,5 +1,6 @@
-from player import *
-from enemigo import *
+from player2 import *
+from enemigo2 import *
+
 
 playerPosX = 620
 playerPosY = 580
@@ -99,12 +100,12 @@ level = [
     "W                W",
     "W  WW        WW  W",
     "W  WW        WW  W",
+    "W      WWWW      W",
     "W                W",
+    "W    WW    WW    W",
+    "W    WW    WW    W",
     "W                W",
-    "W    WWWWWWWW    W",
-    "W    WWWWWWWW    W",
-    "W                W",
-    "W                W",
+    "W      WWWW      W",
     "W                W",
     "W  WW        WW  W",
     "W  WW        WW  W",
@@ -391,11 +392,9 @@ def AnimacionNave(screen):
 def AnimacionTutorial(screen):
     bg = Background((0,0))
     bobby = pygame.image.load(os.path.join(image_path, 'bobby.png'))
-    sp1 = pygame.image.load(os.path.join(image_path, 'speech1.png'))
-    sp2 = pygame.image.load(os.path.join(image_path, 'speech2.png'))
-    sp3 = pygame.image.load(os.path.join(image_path, 'speech3.png'))
+    sp1 = pygame.image.load(os.path.join(image_path, 'speech8.png'))
+    sp2 = pygame.image.load(os.path.join(image_path, 'speech9.png'))
     cont = pygame.image.load(os.path.join(image_path, 'continuar.png'))
-    keys = pygame.image.load(os.path.join(image_path, 'keys.png'))
     primero = True
     while primero:
         for e in pygame.event.get():
@@ -407,7 +406,7 @@ def AnimacionTutorial(screen):
                 primero = False
             screen.blit(bg.image,(0,0))
             screen.blit(bobby,(0,439))
-            screen.blit(sp1,(0,266))
+            screen.blit(sp1,(125,322))
             screen.blit(cont,(461,50))
             pygame.display.flip()
     segundo = True
@@ -421,22 +420,7 @@ def AnimacionTutorial(screen):
                 segundo = False
             screen.blit(bg.image,(0,0))
             screen.blit(bobby,(0,439))
-            screen.blit(sp2,(0,305))
-            screen.blit(cont,(461,50))
-            pygame.display.flip()
-    tercero = True
-    while tercero:
-        for e in pygame.event.get():
-            if e.type == pygame.QUIT:
-                return False
-            if e.type == pygame.KEYDOWN and e.key == pygame.K_ESCAPE:
-                return False
-            if e.type == pygame.KEYDOWN and (e.key == pygame.K_SPACE or e.key == pygame.K_RETURN):
-                tercero = False
-            screen.blit(bg.image,(0,0))
-            screen.blit(bobby,(0,439))
-            screen.blit(sp3,(0,305))
-            screen.blit(keys,(373,592))
+            screen.blit(sp2,(150,310))
             screen.blit(cont,(461,50))
             pygame.display.flip()
     return True
@@ -444,7 +428,7 @@ def AnimacionTutorial(screen):
 def AnimacionFinal(screen):
     bg = Background((0,0))
     bobby = pygame.image.load(os.path.join(image_path, 'bobby.png'))
-    sp1 = pygame.image.load(os.path.join(image_path, 'speech7.png'))
+    sp1 = pygame.image.load(os.path.join(image_path, 'speech10.png'))
     cont = pygame.image.load(os.path.join(image_path, 'continuar.png'))
     primero = True
     while primero:
@@ -457,40 +441,11 @@ def AnimacionFinal(screen):
                 primero = False
             screen.blit(bg.image,(0,0))
             screen.blit(bobby,(0,439))
-            screen.blit(sp1,(129,340))
+            screen.blit(sp1,(139,370))
             screen.blit(cont,(461,50))
             pygame.display.flip()
 
-def AnimacionEnemigo(screen, tercero):
-    option = 0
-    sp4 = pygame.image.load(os.path.join(image_path, 'speech4.png'))
-    sp5 = pygame.image.load(os.path.join(image_path, 'speech5.png'))
-    sp6 = pygame.image.load(os.path.join(image_path, 'speech6.png'))
-    bg = Background((0,0))
-    while tercero:
-        for e in pygame.event.get():
-            if e.type == pygame.QUIT:
-                return False
-            if e.type == pygame.KEYDOWN and (e.key == pygame.K_SPACE or e.key == pygame.K_RETURN):
-                option += 1
-        screen.blit(bg.image,(0,0))
-        for wall in walls:
-            screen.blit(wall.image, (wall.rect.x, wall.rect.y))
-        for vacio in vacios:
-            pygame.draw.rect(screen, (202, 204, 206), vacio.rect)
-        screen.blit(player.image,(playerPosX, playerPosY))
-        if option == 0:
-            screen.blit(sp4,(550,487))
-        if option == 1:
-            screen.blit(enem.image,(enemigoPosX, enemigoPosY))
-            screen.blit(sp5,(550,478))
-        if option == 2:
-            screen.blit(enem.image,(enemigoPosX, enemigoPosY))
-            screen.blit(sp6,(540,472))
-        if option == 3:
-            screen.blit(enem.image,(enemigoPosX, enemigoPosY))
-            tercero = False
-        pygame.display.flip()
+
 def AIEnemigo(destino, screen):
     global vida
     x = y = 0
@@ -503,13 +458,13 @@ def AIEnemigo(destino, screen):
             if enem.bobby.y + y == player.bobby.y + n:
                     destino = (player.bobby.x, player.bobby.y)
     if destino[0] >= enem.bobby.x:
-        enem.move("up", 2.5, 0)
+        enem.move("up", 3, 0)
     if destino[0] <= enem.bobby.x:
-        enem.move("up", -2.5, 0)
+        enem.move("up", -3, 0)
     if destino[1] <= enem.bobby.y:
-        enem.move("up", 0, -2.5)
+        enem.move("up", 0, -3)
     if destino[1] >= enem.bobby.y:
-        enem.move("up", 0, 2.5)
+        enem.move("up", 0, 3)
     screen.blit(enem.image, (enem.bobby.x, enem.bobby.y))
 
 
