@@ -307,16 +307,16 @@ def Level2():
         screen.blit(level2.player.image, (level2.player.bobby.x-6, level2.player.bobby.y))
         screen.blit(hud.barra, (0,0))
         screen.blit(hud.vida, (0,0))
-        screen.blit(hud.cesto, (650,5))
+        screen.blit(hud.banca, (650,5))
         screen.blit(hud.igual, (700,0))
         if level2.latas >= 1:
-            screen.blit(hud.lata, (760,12))
+            screen.blit(hud.botella, (760,5))
         if level2.latas >= 2:
-            screen.blit(hud.lata, (810,12))
+            screen.blit(hud.botella, (810,5))
         if level2.latas >= 3:
-            screen.blit(hud.lata, (860,12))
+            screen.blit(hud.botella, (860,5))
         if level2.latas >= 4:
-            screen.blit(hud.lata, (910,12))
+            screen.blit(hud.botella, (910,5))
             level2.cestos += 1
             level2.latas = 0
         screen.blit(hud.palomita, (963,5))
@@ -327,14 +327,14 @@ def Level2():
         pygame.draw.rect(screen, (255, 0, 21), (52, 7, level2.vida, 36))
         destino = level2.AIEnemigo(destino, screen)
         if level2.cestos >= 1:
-            screen.blit(hud.cesto, (1080,5))
+            screen.blit(hud.banca, (1080,5))
         if level2.cestos >= 2:
-            screen.blit(hud.cesto, (1130,5))
+            screen.blit(hud.banca, (1130,5))
         if level2.cestos >= 3:
-            screen.blit(hud.cesto, (1180,5))
+            screen.blit(hud.banca, (1180,5))
         if level2.cestos >= 4:
             level = False
-            screen.blit(hud.cesto, (1230,5))
+            screen.blit(hud.banca, (1230,5))
             level2.AnimacionFinal(screen)
             pase = True
         pygame.display.flip()

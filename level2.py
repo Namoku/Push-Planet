@@ -62,7 +62,7 @@ class Wall(object):
 
 class Caja(object):
     def __init__(self):
-        self.image = pygame.image.load(os.path.join(image_path, 'lata.png'))
+        self.image = pygame.image.load(os.path.join(image_path, 'botella.png'))
         self.caja1 = pygame.Rect(caja1PosX, caja1PosY, trashSizeX, trashSizeY)
         self.caja2 = pygame.Rect(caja2PosX, caja2PosY, trashSizeX, trashSizeY)
         self.caja3 = pygame.Rect(caja3PosX, caja3PosY, trashSizeX, trashSizeY)
@@ -80,9 +80,9 @@ class Bote(object):
     def __init__(self):
         self.image = pygame.image.load(os.path.join(image_path, 'nave3.png'))
         self.rect = self.image.get_rect()
-        self.rect.x = 420
-        self.rect.y = -136
-        self.nave = pygame.Rect(537, 50, 267, 96)
+        self.rect.x = 445
+        self.rect.y = -183
+        self.nave = pygame.Rect(515, 50, 250, 96)
 
 
 walls = []  # Paredes
@@ -379,14 +379,14 @@ def AnimacionNave(screen):
     for n in range(219, -137, -1):
         screen.blit(bg.image,(0,0))
         pygame.time.wait(6)
-        screen.blit(nave1,(420,n))
+        screen.blit(nave1,(445,n))
         pygame.display.flip()
     for x in range(10):
-        screen.blit(nave2,(420,n))
+        screen.blit(nave2,(445,n))
         screen.blit(bg.image,(0,0))
         pygame.display.flip()
         pygame.time.wait(100)
-        screen.blit(nave3,(420,n))
+        screen.blit(nave3,(445,n))
         pygame.display.flip()
 
 def AnimacionTutorial(screen):
