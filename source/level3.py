@@ -1,6 +1,7 @@
 import sys
 sys.path.insert(1, 'source/')
 from player3 import *
+from player import Humo
 from enemigo3 import *
 
 
@@ -71,6 +72,13 @@ class Caja(object):
         self.caja1HitBox = pygame.Rect(caja1PosX - 2, caja1PosY - 2, trashSizeX + 10, trashSizeY + 10)
         self.caja2HitBox = pygame.Rect(caja2PosX - 2, caja2PosY - 2, trashSizeX + 10, trashSizeY + 10)
         self.caja3HitBox = pygame.Rect(caja3PosX - 2, caja3PosY - 2, trashSizeX + 10, trashSizeY + 10)
+choque1 = False
+choque2 = False
+choque3 = False
+humo1 = Humo()
+humo2 = Humo()
+humo3 = Humo()
+humo4 = Humo()
 
 
 class Bote(object):

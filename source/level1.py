@@ -21,7 +21,7 @@ enemigoPosX = 640
 enemigoPosY = 360
 vida = 586
 latas = 0
-cestos = 0
+cestos = 2
 
 
 
@@ -39,7 +39,7 @@ def restart():
     caja.caja3.y = caja3PosY
     vida = 586
     latas = 0
-    cestos = 0
+    cestos = 2
 
 
 current_path = os.path.dirname(__file__)  # Where your .py file is located
@@ -52,7 +52,6 @@ class Background(pygame.sprite.Sprite):
         self.image = pygame.image.load(os.path.join(image_path, 'fondo.png'))
         self.rect = self.image.get_rect()
         self.rect.left, self.rect.top = location
-
 
 imagenWall = pygame.image.load(os.path.join(image_path, 'level2.png'))
 vacio = pygame.image.load(os.path.join(image_path, 'level2back.png'))
@@ -71,6 +70,9 @@ class Caja(object):
         self.caja1HitBox = pygame.Rect(caja1PosX - 2, caja1PosY - 2, trashSizeX + 10, trashSizeY + 10)
         self.caja2HitBox = pygame.Rect(caja2PosX - 2, caja2PosY - 2, trashSizeX + 10, trashSizeY + 10)
         self.caja3HitBox = pygame.Rect(caja3PosX - 2, caja3PosY - 2, trashSizeX + 10, trashSizeY + 10)
+choque1 = False
+choque2 = False
+choque3 = False
 
 
 class Bote(object):
