@@ -279,11 +279,11 @@ def LevelSelector(BackGround):
         pygame.display.flip()
 def Aleatorio(level, power, walls):
     if level.caja.caja1.colliderect(level.bote.nave):
-        Empacado(level.humo1, level.humo2, level.vida, level.latas, level.caja.caja1, level.caja.caja2, level.caja.caja3, level, walls, power)
+        Empacado(level.humo1, level.humo2, level.caja.caja1, level.caja.caja2, level.caja.caja3, level, walls, power)
     if level.caja.caja2.colliderect(level.bote.nave):
-        Empacado(level.humo1, level.humo2, level.vida, level.latas, level.caja.caja2, level.caja.caja1, level.caja.caja3, level, walls, power)
+        Empacado(level.humo1, level.humo2, level.caja.caja2, level.caja.caja1, level.caja.caja3, level, walls, power)
     if level.caja.caja3.colliderect(level.bote.nave):
-        Empacado(level.humo1, level.humo2, level.vida, level.latas, level.caja.caja3, level.caja.caja2, level.caja.caja1, level, walls, power)
+        Empacado(level.humo1, level.humo2, level.caja.caja3, level.caja.caja2, level.caja.caja1, level, walls, power)
 
 def Procesar(caja1, caja2, caja3, level, walls):
     caja1.x = randint(320, 680)
@@ -292,7 +292,7 @@ def Procesar(caja1, caja2, caja3, level, walls):
         if caja1.colliderect(wall.rect) or level.ColisionEnemigoCaja(caja1) or caja1.colliderect(caja2) or caja1.colliderect(caja3):
             Procesar(caja1, caja2, caja3, level, walls)
 
-def Empacado(humo1, humo2, vida, latas, caja1, caja2, caja3, level, walls, power):
+def Empacado(humo1, humo2, caja1, caja2, caja3, level, walls, power):
     humo1.rect.x = caja1.x
     humo1.rect.y = caja1.y
     Procesar(caja1, caja2, caja3, level, walls)
@@ -300,8 +300,8 @@ def Empacado(humo1, humo2, vida, latas, caja1, caja2, caja3, level, walls, power
     humo2.rect.y = caja1.y
     humo1.terminado = False
     humo2.terminado = False
-    vida += power
-    latas += 1
+    level.vida += power
+    level.latas += 1
 
 def Level1():
     BackGround = level1.Background([0, 0])
