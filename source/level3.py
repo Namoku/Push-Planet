@@ -51,7 +51,7 @@ image_path = os.path.join(resource_path, 'level')  # The image folder path
 class Background(pygame.sprite.Sprite):
     def __init__(self, location):
         pygame.sprite.Sprite.__init__(self)  # call Sprite initializer
-        self.image = pygame.image.load(os.path.join(image_path, 'fondo.png'))
+        self.image = pygame.image.load(os.path.join(image_path, 'fondo3.png'))
         self.rect = self.image.get_rect()
         self.rect.left, self.rect.top = location
 

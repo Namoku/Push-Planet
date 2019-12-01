@@ -12,7 +12,6 @@ pygame.init()
 pygame.display.set_caption("Push Planet")
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
-BackGround = level1.Background([0, 0])
 font = pygame.font.Font('freesansbold.ttf', 18)
 # Colores
 
@@ -24,6 +23,7 @@ vol = 0.2
 
 #Pause
 def Pause(n):
+    BackGround = menu.Background((0,0))
     pause = True
     option = 0
     while pause:
@@ -197,6 +197,7 @@ def Teclado(nivel, n):
     return nivel
 #Menu principal
 def MainMenu():
+    BackGround = menu.Background((0,0))
     pygame.mixer.music.load("assets/songs/menu.mp3")
     pygame.mixer.music.play()
     running = True
@@ -224,14 +225,14 @@ def MainMenu():
                 option = menu.Ciclo1(option)
             if e.type == pygame.KEYDOWN and (e.key == pygame.K_SPACE or e.key == pygame.K_RETURN):
                 if option == 0:
-                    LevelSelector()
+                    LevelSelector(BackGround)
                 if option == 1:
                     Opciones()
                 if option == 2:
                     running = False
         pygame.display.flip()
 #Seleccionar nivel
-def LevelSelector():
+def LevelSelector(BackGround):
     selector = True
     option = 0
     while selector:
@@ -370,6 +371,7 @@ def Aleatorio(level, power, walls):
             level.latas += 1
 
 def Level1():
+    BackGround = level1.Background([0, 0])
     pase = False
     destino = (0,0)
     level1.restart()
@@ -448,6 +450,7 @@ def Level1():
             Level2()
 
 def Level2():
+    BackGround = level2.Background([0, 0])
     pase = False
     destino = (0,0)
     level2.restart()
@@ -527,6 +530,7 @@ def Level2():
         Level3()
 
 def Level3():
+    BackGround = level1.Background([0, 0])
     destino = (0,0)
     level3.restart()
     power = 400
