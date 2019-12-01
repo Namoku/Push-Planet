@@ -97,6 +97,7 @@ def Muerte(n):
                     return False
         pygame.display.flip()
 def Opciones():
+    BackGround = menu.Background((0,0))
     global vol
     pause = True
     option = 1
