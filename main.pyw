@@ -278,97 +278,30 @@ def LevelSelector(BackGround):
                     pygame.mixer.music.play()
         pygame.display.flip()
 def Aleatorio(level, power, walls):
+    if level.caja.caja1.colliderect(level.bote.nave):
+        Empacado(level.humo1, level.humo2, level.vida, level.latas, level.caja.caja1, level.caja.caja2, level.caja.caja3, level, walls, power)
+    if level.caja.caja2.colliderect(level.bote.nave):
+        Empacado(level.humo1, level.humo2, level.vida, level.latas, level.caja.caja2, level.caja.caja1, level.caja.caja3, level, walls, power)
+    if level.caja.caja3.colliderect(level.bote.nave):
+        Empacado(level.humo1, level.humo2, level.vida, level.latas, level.caja.caja3, level.caja.caja2, level.caja.caja1, level, walls, power)
+
+def Procesar(caja1, caja2, caja3, level, walls):
+    caja1.x = randint(320, 680)
+    caja1.y = randint(354, 680)
     for wall in walls:
-        if level.choque1:
-            level.humo1.terminado = False
-            level.caja.caja1.x = randint(320, 680)
-            level.caja.caja1.y = randint(354, 680)
-            level.humo1.rect.x = level.caja.caja1.x
-            level.humo1.rect.y = level.caja.caja1.y
-            if level.caja.caja1.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja1) or (level.caja.caja1.colliderect(level.caja.caja2) or level.caja.caja1.colliderect(level.caja.caja3)):
-                level.choque1 = True
-                Aleatorio(level, power, walls)
-            else:
-                level.choque1 = False
-            level.humo2.rect.x = level.caja.caja1.x
-            level.humo2.rect.y = level.caja.caja1.y
-            level.humo2.terminado = False
-        if level.choque2:
-            level.humo1.terminado = False
-            level.caja.caja1.x = randint(320, 680)
-            level.caja.caja1.y = randint(354, 680)
-            level.humo1.rect.x = level.caja.caja2.x
-            level.humo1.rect.y = level.caja.caja2.y
-            if level.caja.caja2.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja2) or (level.caja.caja2.colliderect(level.caja.caja1) or level.caja.caja2.colliderect(level.caja.caja3)):
-                level.choque2 = True
-                Aleatorio(level, power, walls)
-            else:
-                level.choque2 = False
-            level.humo1.rect.x = level.caja.caja2.x
-            level.humo1.rect.y = level.caja.caja2.y
-            level.humo2.terminado = False
-        if level.choque3:
-            level.humo1.terminado = False
-            level.caja.caja1.x = randint(320, 680)
-            level.caja.caja1.y = randint(354, 680)
-            level.humo1.rect.x = level.caja.caja3.x
-            level.humo1.rect.y = level.caja.caja3.y
-            if level.caja.caja3.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja3) or (level.caja.caja3.colliderect(level.caja.caja2) or level.caja.caja3.colliderect(level.caja.caja1)):
-                level.choque3 = True
-                Aleatorio(level, power, walls)
-            else:
-                level.choque3 = False
-            level.humo1.rect.x = level.caja.caja3.x
-            level.humo1.rect.y = level.caja.caja3.y
-            level.humo2.terminado = False
-        if level.caja.caja1.colliderect(level.bote.nave):
-            level.humo1.rect.x = level.caja.caja1.x
-            level.humo1.rect.y = level.caja.caja1.y
-            level.humo1.terminado = False
-            level.vida += power
-            level.caja.caja1.x = randint(320, 680)
-            level.caja.caja1.y = randint(354, 680)
-            if level.caja.caja1.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja1) or level.caja.caja1.colliderect(level.player.bobby) or (level.caja.caja1.colliderect(level.caja.caja2) or level.caja.caja1.colliderect(level.caja.caja3)):
-                level.choque1 = True
-                Aleatorio(level, power, walls)
-            else:
-                level.choque1 = False
-            level.humo2.rect.x = level.caja.caja1.x
-            level.humo2.rect.y = level.caja.caja1.y
-            level.humo2.terminado = False
-            level.latas += 1
-        if level.caja.caja2.colliderect(level.bote.nave):
-            level.humo1.rect.x = level.caja.caja1.x
-            level.humo1.rect.y = level.caja.caja1.y
-            level.humo1.terminado = False
-            level.vida += power
-            level.caja.caja2.x = randint(320, 680)
-            level.caja.caja2.y = randint(354, 680)
-            if level.caja.caja2.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja2) or level.caja.caja2.colliderect(level.player.bobby) or (level.caja.caja2.colliderect(level.caja.caja1) or level.caja.caja2.colliderect(level.caja.caja3)):
-                level.choque2 = True
-                Aleatorio(level, power, walls)
-            else:
-                level.choque2 = False
-            level.humo2.rect.x = level.caja.caja1.x
-            level.humo2.rect.y = level.caja.caja1.y
-            level.humo2.terminado = False
-            level.latas += 1
-        if level.caja.caja3.colliderect(level.bote.nave):
-            level.humo1.rect.x = level.caja.caja1.x
-            level.humo1.rect.y = level.caja.caja1.y
-            level.humo1.terminado = False
-            level.vida += power
-            level.caja.caja3.x = randint(320, 680)
-            level.caja.caja3.y = randint(354, 680)
-            if level.caja.caja3.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja3) or level.caja.caja3.colliderect(level.player.bobby) or (level.caja.caja3.colliderect(level.caja.caja2) or level.caja.caja3.colliderect(level.caja.caja1)):
-                level.choque3 = True
-                Aleatorio(level, power, walls)
-            else:
-                level.choque3 = False
-            level.humo2.rect.x = level.caja.caja1.x
-            level.humo2.rect.y = level.caja.caja1.y
-            level.humo2.terminado = False
-            level.latas += 1
+        if caja1.colliderect(wall.rect) or level.ColisionEnemigoCaja(caja1) or caja1.colliderect(caja2) or caja1.colliderect(caja3):
+            Procesar(caja1, caja2, caja3, level, walls)
+
+def Empacado(humo1, humo2, vida, latas, caja1, caja2, caja3, level, walls, power):
+    humo1.rect.x = caja1.x
+    humo1.rect.y = caja1.y
+    Procesar(caja1, caja2, caja3, level, walls)
+    humo2.rect.x = caja1.x
+    humo2.rect.y = caja1.y
+    humo1.terminado = False
+    humo2.terminado = False
+    vida += power
+    latas += 1
 
 def Level1():
     BackGround = level1.Background([0, 0])
