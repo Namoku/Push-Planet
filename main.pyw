@@ -284,9 +284,9 @@ def Aleatorio(level, power, walls):
             level.caja.caja1.y = randint(354, 680)
             level.humo1.rect.x = level.caja.caja1.x
             level.humo1.rect.y = level.caja.caja1.y
-            if level.caja.caja1.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja1) or level.caja.caja1.colliderect(level.player.bobby) or (level.caja.caja1.colliderect(level.caja.caja2) or level.caja.caja1.colliderect(level.caja.caja3)):
+            if level.caja.caja1.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja1) or (level.caja.caja1.colliderect(level.caja.caja2) or level.caja.caja1.colliderect(level.caja.caja3)):
                 level.choque1 = True
-                return Aleatorio(level, power, walls)
+                Aleatorio(level, power, walls)
             else:
                 level.choque1 = False
             level.humo2.rect.x = level.caja.caja1.x
@@ -298,9 +298,9 @@ def Aleatorio(level, power, walls):
             level.caja.caja1.y = randint(354, 680)
             level.humo1.rect.x = level.caja.caja2.x
             level.humo1.rect.y = level.caja.caja2.y
-            if level.caja.caja2.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja2) or level.caja.caja2.colliderect(level.player.bobby) or (level.caja.caja2.colliderect(level.caja.caja1) or level.caja.caja2.colliderect(level.caja.caja3)):
+            if level.caja.caja2.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja2) or (level.caja.caja2.colliderect(level.caja.caja1) or level.caja.caja2.colliderect(level.caja.caja3)):
                 level.choque2 = True
-                return Aleatorio(level, power, walls)
+                Aleatorio(level, power, walls)
             else:
                 level.choque2 = False
             level.humo1.rect.x = level.caja.caja2.x
@@ -312,9 +312,9 @@ def Aleatorio(level, power, walls):
             level.caja.caja1.y = randint(354, 680)
             level.humo1.rect.x = level.caja.caja3.x
             level.humo1.rect.y = level.caja.caja3.y
-            if level.caja.caja3.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja3) or level.caja.caja3.colliderect(level.player.bobby) or (level.caja.caja3.colliderect(level.caja.caja2) or level.caja.caja3.colliderect(level.caja.caja1)):
+            if level.caja.caja3.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja3) or (level.caja.caja3.colliderect(level.caja.caja2) or level.caja.caja3.colliderect(level.caja.caja1)):
                 level.choque3 = True
-                return Aleatorio(level, power, walls)
+                Aleatorio(level, power, walls)
             else:
                 level.choque3 = False
             level.humo1.rect.x = level.caja.caja3.x
@@ -329,7 +329,7 @@ def Aleatorio(level, power, walls):
             level.caja.caja1.y = randint(354, 680)
             if level.caja.caja1.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja1) or level.caja.caja1.colliderect(level.player.bobby) or (level.caja.caja1.colliderect(level.caja.caja2) or level.caja.caja1.colliderect(level.caja.caja3)):
                 level.choque1 = True
-                return Aleatorio(level, power, walls)
+                Aleatorio(level, power, walls)
             else:
                 level.choque1 = False
             level.humo2.rect.x = level.caja.caja1.x
@@ -345,7 +345,7 @@ def Aleatorio(level, power, walls):
             level.caja.caja2.y = randint(354, 680)
             if level.caja.caja2.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja2) or level.caja.caja2.colliderect(level.player.bobby) or (level.caja.caja2.colliderect(level.caja.caja1) or level.caja.caja2.colliderect(level.caja.caja3)):
                 level.choque2 = True
-                return Aleatorio(level, power, walls)
+                Aleatorio(level, power, walls)
             else:
                 level.choque2 = False
             level.humo2.rect.x = level.caja.caja1.x
@@ -361,7 +361,7 @@ def Aleatorio(level, power, walls):
             level.caja.caja3.y = randint(354, 680)
             if level.caja.caja3.colliderect(wall.rect) or level.ColisionEnemigoCaja(level.caja.caja3) or level.caja.caja3.colliderect(level.player.bobby) or (level.caja.caja3.colliderect(level.caja.caja2) or level.caja.caja3.colliderect(level.caja.caja1)):
                 level.choque3 = True
-                return Aleatorio(level, power, walls)
+                Aleatorio(level, power, walls)
             else:
                 level.choque3 = False
             level.humo2.rect.x = level.caja.caja1.x
