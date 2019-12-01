@@ -77,8 +77,6 @@ def Muerte(n):
             menu.Bordes(screen, [540, 430])
         if option == 2:
             menu.Bordes(screen, [540, 550])
-        if option == 3:
-            option = 2
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 return False
