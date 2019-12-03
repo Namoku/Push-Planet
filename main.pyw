@@ -119,14 +119,6 @@ def Opciones():
             if e.type == pygame.KEYDOWN and (e.key == pygame.K_SPACE or e.key == pygame.K_RETURN):
                 if option == 0:
                     return True
-                if option == 1:
-                    if n == 0:
-                        level1.restart()
-                    if n == 1:
-                        level2.restart()
-                    if n == 2:
-                        level3.restart()
-                    return True
                 if option == 2:
                     return False
             if option == 1:
