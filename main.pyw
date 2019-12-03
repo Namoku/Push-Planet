@@ -11,8 +11,8 @@ pygame.init()
 # Posicionar pantalla
 pygame.display.set_caption("Push Planet")
 screen = pygame.display.set_mode((1280, 720))
+pygame.display.set_icon(menu.icon)
 clock = pygame.time.Clock()
-font = pygame.font.Font('freesansbold.ttf', 18)
 # Colores
 
 # Ciclo
@@ -200,7 +200,7 @@ def Teclado(nivel, n):
 def MainMenu():
     BackGround = menu.Background((0,0))
     pygame.mixer.music.load("assets/songs/menu.mp3")
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
     running = True
     option = 0
     while running:
@@ -264,19 +264,19 @@ def LevelSelector(BackGround):
                     Level1()
                     pygame.mixer.music.stop()
                     pygame.mixer.music.load("assets/songs/menu.mp3")
-                    pygame.mixer.music.play()
+                    pygame.mixer.music.play(-1)
                 if option == 1:
                     selector = False
                     Level2()
                     pygame.mixer.music.stop()
                     pygame.mixer.music.load("assets/songs/menu.mp3")
-                    pygame.mixer.music.play()
+                    pygame.mixer.music.play(-1)
                 if option == 2:
                     selector = False
                     Level3()
                     pygame.mixer.music.stop()
                     pygame.mixer.music.load("assets/songs/menu.mp3")
-                    pygame.mixer.music.play()
+                    pygame.mixer.music.play(-1)
         pygame.display.flip()
 def Aleatorio(level, power, walls):
     if level.caja.caja1.colliderect(level.bote.nave):
@@ -316,7 +316,7 @@ def Level1():
     t0 = time.time()
     pygame.mixer.music.stop()
     pygame.mixer.music.load("assets/songs/theme.mp3")
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
     while level:
         pygame.mixer.music.set_volume(vol)
         dt = clock.tick(50)
@@ -338,10 +338,13 @@ def Level1():
         screen.blit(level1.caja.image, level1.caja.caja2)
         screen.blit(level1.caja.image, level1.caja.caja3)
         screen.blit(level1.player.image, (level1.player.bobby.x-6, level1.player.bobby.y))
+        level1.player.animacionVida(screen)
         screen.blit(hud.barra, (0,0))
         screen.blit(hud.vida, (0,0))
         screen.blit(hud.cesto, (650,5))
         screen.blit(hud.igual, (700,0))
+        screen.blit(hud.barra11, (755, 0))
+        screen.blit(hud.barra12, (1075, 0))
         if level1.latas >= 1:
             screen.blit(hud.lata, (760,12))
         if level1.latas >= 2:
@@ -357,7 +360,7 @@ def Level1():
         if level1.vida > 586:
             level1.vida = 586
         screen.blit(hud.barra2, (50,5))
-        pygame.draw.rect(screen, (255, 0, 21), (52, 7, level1.vida, 36))
+        pygame.draw.rect(screen, (6, 133, 19), (52, 7, level1.vida, 36))
         destino = level1.AIEnemigo(destino, screen)
         if level1.cestos >= 1:
             screen.blit(hud.cesto, (1080,5))
@@ -394,7 +397,7 @@ def Level2():
     t0 = time.time()
     pygame.mixer.music.stop()
     pygame.mixer.music.load("assets/songs/theme.mp3")
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
     level2.cestos = 1
     while level:
         pygame.mixer.music.set_volume(vol)
@@ -418,10 +421,13 @@ def Level2():
         screen.blit(level2.caja.image, level2.caja.caja2)
         screen.blit(level2.caja.image, level2.caja.caja3)
         screen.blit(level2.player.image, (level2.player.bobby.x-6, level2.player.bobby.y))
+        level2.player.animacionVida(screen)
         screen.blit(hud.barra, (0,0))
         screen.blit(hud.vida, (0,0))
         screen.blit(hud.banca, (650,5))
         screen.blit(hud.igual, (700,0))
+        screen.blit(hud.barra21, (755, 0))
+        screen.blit(hud.barra22, (1075, 0))
         if level2.latas >= 1:
             screen.blit(hud.botella, (760,5))
         if level2.latas >= 2:
@@ -437,7 +443,7 @@ def Level2():
         screen.blit(hud.barra2, (50,5))
         if level2.vida > 586:
             level2.vida = 586
-        pygame.draw.rect(screen, (255, 0, 21), (52, 7, level2.vida, 36))
+        pygame.draw.rect(screen, (6, 133, 19), (52, 7, level2.vida, 36))
         destino = level2.AIEnemigo(destino, screen)
         if level2.cestos >= 1:
             screen.blit(hud.banca, (1080,5))
@@ -473,7 +479,7 @@ def Level3():
     t0 = time.time()
     pygame.mixer.music.stop()
     pygame.mixer.music.load("assets/songs/theme.mp3")
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
     #level3.cestos = 4
     while level:
         pygame.mixer.music.set_volume(vol)
@@ -497,10 +503,13 @@ def Level3():
         screen.blit(level3.caja.image, level3.caja.caja2)
         screen.blit(level3.caja.image, level3.caja.caja3)
         screen.blit(level3.player.image, (level3.player.bobby.x-6, level3.player.bobby.y))
+        level3.player.animacionVida(screen)
         screen.blit(hud.barra, (0,0))
         screen.blit(hud.vida, (0,0))
         screen.blit(hud.cesto, (650,5))
         screen.blit(hud.igual, (700,0))
+        screen.blit(hud.barra11, (755, 0))
+        screen.blit(hud.barra12, (1075, 0))
         if level3.latas >= 1:
             screen.blit(hud.lata, (760,12))
         if level3.latas >= 2:
@@ -516,7 +525,7 @@ def Level3():
         screen.blit(hud.barra2, (50,5))
         if level3.vida > 586:
             level3.vida = 586
-        pygame.draw.rect(screen, (255, 0, 21), (52, 7, level3.vida, 36))
+        pygame.draw.rect(screen, (6, 133, 19), (52, 7, level3.vida, 36))
         destino = level3.AIEnemigo(destino, screen)
         if level3.cestos >= 1:
             screen.blit(hud.cesto, (1080,5))

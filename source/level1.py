@@ -40,6 +40,12 @@ def restart():
     vida = 586
     latas = 0
     cestos = 2
+    humo1.terminado = True
+    humo2.terminado = True
+    humo3.terminado = True
+    humo4.terminado = True
+    player.n = 0
+    player.estadoDa = False
 
 
 current_path = os.path.dirname(__file__)  # Where your .py file is located

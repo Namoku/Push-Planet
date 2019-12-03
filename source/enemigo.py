@@ -57,6 +57,7 @@ class Monster(pygame.sprite.Sprite):
             level1.humo4.terminado = False
             level1.humo4.rect.x = self.bobby.x
             level1.humo4.rect.y = self.bobby.y
+            level1.player.estadoDa = True
 
         self.image = self.sheet.subsurface(self.sheet.get_clip())
 

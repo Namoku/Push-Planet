@@ -22,6 +22,20 @@ class Player(pygame.sprite.Sprite):
         self.right_states = { 0: (0, 80, 40, 40), 1: (40, 80, 40, 40), 2: (0, 80, 40, 40), 3: (0, 80, 40, 40) }
         self.up_states = { 0: (0, 40, 40, 40), 1: (40, 40, 40, 40), 2: (0, 40, 40, 40), 3: (0, 40, 40, 40) }
         self.down_states = { 0: (0, 0, 40, 40), 1: (40, 0, 40, 40), 2: (0, 0, 40, 40), 3: (0, 0, 40, 40) }
+        self.colorImg = pygame.image.load(os.path.join(image_path, 'bobby_dmg.png'))
+        self.estadoDa = False
+        self.n = 0
+
+    def animacionVida(self, screen):
+        if self.estadoDa:
+            self.estadoDa = False
+            self.n = 1
+        elif self.n > 20:
+            self.n  = 0
+        elif self.n >= 1:
+            self.n += 1
+            if self.n % 2 == 0:
+                screen.blit(self.colorImg, (self.bobby.x-6, self.bobby.y))
 
     def get_frame(self, frame_set):
         self.frame += 1

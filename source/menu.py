@@ -32,6 +32,8 @@ volumen1 = pygame.image.load(os.path.join(image_path, 'volumen.png'))
 volumen2 = pygame.image.load(os.path.join(image_path, 'volumen2.png'))
 bg_death = pygame.image.load(os.path.join(image_path, 'bg_death.png'))
 gameover = pygame.image.load(os.path.join(image_path, 'gameover.png'))
+icon = pygame.image.load(os.path.join(image_path, 'pushplanet.png'))
+
 
 def Bordes(screen, pos):
     color = (0, 0, 0)

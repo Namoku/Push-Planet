@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(1, 'source/')
 from player2 import *
-from player import Humo
+from level1 import humo1, humo2, humo3, humo4
 from enemigo2 import *
 
 
@@ -42,6 +42,12 @@ def restart():
     vida = 586
     latas = 0
     cestos = 1
+    humo1.terminado = True
+    humo2.terminado = True
+    humo3.terminado = True
+    humo4.terminado = True
+    player.n = 0
+    player.estadoDa = False
 
 
 current_path = os.path.dirname(__file__)  # Where your .py file is located
@@ -93,10 +99,6 @@ enem = Monster((enemigoPosX,enemigoPosY))
 caja = Caja()
 vacios = []
 bote = Bote()
-humo1 = Humo()
-humo2 = Humo()
-humo3 = Humo()
-humo4 = Humo()
 
 level = [
     "WWWWWWWWWWWWWWWWWW",

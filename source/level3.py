@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(1, 'source/')
 from player3 import *
-from player import Humo
+from level1 import humo1, humo2, humo3, humo4
 from enemigo3 import *
 
 
@@ -42,6 +42,12 @@ def restart():
     vida = 586
     latas = 0
     cestos = 0
+    humo1.terminado = True
+    humo2.terminado = True
+    humo3.terminado = True
+    humo4.terminado = True
+    player.n = 0
+    player.estadoDa = False
 
 
 current_path = os.path.dirname(__file__)  # Where your .py file is located
@@ -75,10 +81,6 @@ class Caja(object):
 choque1 = False
 choque2 = False
 choque3 = False
-humo1 = Humo()
-humo2 = Humo()
-humo3 = Humo()
-humo4 = Humo()
 
 
 class Bote(object):
